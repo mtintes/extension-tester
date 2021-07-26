@@ -6,3 +6,11 @@ on:
             test:
                 description: 'options'
                 required: true
+
+jobs:
+    test:
+      name: metric start event
+      runs-on: ubuntu-latest
+      steps:
+        - name: test
+          run: echo "test"
