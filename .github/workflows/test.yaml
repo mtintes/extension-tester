@@ -9,7 +9,7 @@ on:
 
 jobs:
     test:
-      name: metric start event
+      name: test job
       runs-on: ubuntu-latest
       steps:
         - name: test
