@@ -2,6 +2,7 @@ name: 'publish to slack'
 description: 'ya publish to slack'
 
 runs:
+  using: "composite"
   strategy:
     matrix:
       payload: 
