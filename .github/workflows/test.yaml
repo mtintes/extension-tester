@@ -12,5 +12,5 @@ jobs:
       name: test job
       runs-on: ubuntu-latest
       steps:
-        - name: test
-          run: echo "test"
+        - uses: actions/checkout@v2
+        - uses: ./.github/actions/slack-publish
