@@ -1,0 +1,54 @@
+name: 'publish to slack'
+description: 'ya publish to slack'
+
+runs:
+  strategy:
+    matrix:
+      payload: 
+      {
+          channel: "bot",
+          text: {
+              attachments: [
+                  {
+                      fallback: "This did some stuff",
+                      color: "#36a64f",
+                      author_name: os.GetEnv("GITHUB_ACTOR"),
+                      author_link: os.Getenv("GITHUB_SERVER_URL") + "/" + os.Getenv("GITHUB_ACTOR"),
+                      author_icon: os.Getenv("GITHUB_SERVER_URL") + "/" + os.Getenv("GITHUB_ACTOR") + ".png?size=32",
+                      fields: [
+                          {
+                              "title": "Ref",
+                              "value": os.Getenv("GITHUB_REF"),
+                              "short": true
+                          },
+                          {
+                              "title": "Event",
+                              "value": os.Getenv("GITHUB_EVENT_NAME"),
+                              "short": true
+                          },
+                          {
+                              "title": "Actions URL",
+                              "value": "<" + os.Getenv("GITHUB_SERVER_URL") + "/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv("GITHUB_SHA") + "/checks|" + os.Getenv("GITHUB_WORKFLOW") + ">",
+                              "short": true
+                          },
+                          {
+                              "title": "Commit",
+                              "value": "<" + os.Getenv("GITHUB_SERVER_URL") + "/" + os.Getenv("GITHUB_REPOSITORY") + "/commit/" + os.Getenv("GITHUB_SHA") + "|" + commit_sha + ">",
+                              "short": true
+                          },
+                          {
+                              "title": "Thing",
+                              "value": "big long message",
+                              "short": false
+                          }
+                      ],
+                      "footer": "Powered by a thing"
+                  }
+              ]
+          }
+      }
+
+  steps:
+    - shell: bash
+      run: |            
+        curl -X POST https://slack.com/api/chat.postMessage -d  "${{ toJSON(matrix.payload) }}" -H "Authorization: Bearer ${secrets.SLACK_TOKEN}"
