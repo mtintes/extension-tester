@@ -3,9 +3,11 @@ description: 'ya publish to slack'
 
 runs:
   using: "composite"
-  strategy:
-    matrix:
-      payload: 
+  steps:
+    - shell: bash
+      run: |
+        payload=${ jq -n \
+          '
       {
           channel: "bot",
           text: {
@@ -47,9 +49,5 @@ runs:
                   }
               ]
           }
-      }
-
-  steps:
-    - shell: bash
-      run: |            
-        curl -X POST https://slack.com/api/chat.postMessage -d  "${{ toJSON(matrix.payload) }}" -H "Authorization: Bearer ${secrets.SLACK_TOKEN}"
+      }')
+        curl -X POST https://slack.com/api/chat.postMessage -d  "${{ toJSON($payload) }}" -H "Authorization: Bearer ${secrets.SLACK_TOKEN}"
