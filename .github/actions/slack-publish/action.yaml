@@ -12,22 +12,22 @@ env:
             author_link: "$GITHUB_SERVER_URL/$GITHUB_ACTOR"
             author_icon: "$GITHUB_SERVER_URL/$GITHUB_ACTOR.png?size=32"
             fields:
-            - title: Ref
+            - title: "Ref"
               value: "$GITHUB_REF"
               short: true
-            - title: Event
+            - title: "Event"
               value: "$GITHUB_EVENT_NAME"
               short: true
-            - title: Actions URL
+            - title: "Actions URL"
               value: "<$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA/checks|$GITHUB_WORKFLOW>"
               short: true
-            - title: Commit
+            - title: "Commit"
               value: "<$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA|commit_sha>"
               short: true
-            - title: Thing
-              value: big long message
+            - title: "Thing"
+              value: "big long message"
               short: false
-            footer: Powered by a thing
+            footer: "Powered by a thing"
 
 runs:
   using: "composite"
