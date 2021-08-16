@@ -11,4 +11,4 @@ runs:
         echo "::set-output name=payload::$jsonMessage"
     - shell: bash
       run: |
-        curl -X POST "https://slack.com/api/chat.postMessage" -d '${{ toJson(steps.set_payload.outputs.payload) }}' -H "Authorization: Bearer $secrets.SLACK_TOKEN" -H "Content-Type: application/json"
+        curl -X POST "https://slack.com/api/chat.postMessage" -d '${{ toJson(steps.set_payload.outputs.payload) }}' -H "Authorization: Bearer ${{secrets.SLACK_TOKEN}}" -H "Content-Type: application/json"
