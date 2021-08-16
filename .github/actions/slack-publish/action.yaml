@@ -34,4 +34,5 @@ runs:
   steps:
     - shell: bash
       run: |
+        echo "${{ env.PAYLOAD }}"
         echo "${{ toJSON(env.PAYLOAD) }}"
