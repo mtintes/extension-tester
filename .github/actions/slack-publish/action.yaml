@@ -1,6 +1,9 @@
 name: 'publish to slack'
 description: 'ya publish to slack'
 
+env:
+  SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
+
 runs:
   using: "composite"
   steps:
@@ -11,4 +14,4 @@ runs:
         echo "::set-output name=payload::$jsonMessage"
     - shell: bash
       run: |
-        curl -X POST "https://slack.com/api/chat.postMessage" -H "Authorization: Bearer ${secrets.SLACK_TOKEN}" -H "Content-Type: application/json" -d '${{steps.set_payload.outputs.payload }}'
+        curl -X POST "https://slack.com/api/chat.postMessage" -H "Authorization: Bearer $SLACK_TOKEN" -H "Content-Type: application/json" -d '${{steps.set_payload.outputs.payload }}'
