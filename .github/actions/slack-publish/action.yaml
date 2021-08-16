@@ -5,8 +5,13 @@ runs:
   using: "composite"
   steps:
     - shell: bash
+      id: set_payload
       run: |
-        ls ./.github/actions/slack-publish
-        jsonMessage=$(< ./.github/actions/slack-publish/slack_format.json)
-        payload=$(printf '%s' "$jsonMessage" | jq --raw-input --slurp '.')
-        echo "$payload"
+        jsonMessage=`cat ./.github/actions/slack-publish/slack_format.json`
+        jsonMessage="${jsonMessage//'%'/'%25'}"
+        jsonMessage="${jsonMessage//$'\n'/'%0A'}"
+        jsonMessage="${jsonMessage//$'\r'/'%0D'}"
+        echo "::set-output name=payload::$jsonMessage"
+    - shell: bash
+      run: |
+        echo "${{fromJson(steps.set_payload.outputs.payload)}}"
