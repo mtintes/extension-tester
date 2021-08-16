@@ -3,7 +3,7 @@
        "text": {
            "attachments": [
                {
-                   "fallback: "This did some stuff",
+                   "fallback": "This did some stuff",
                    "color": "#36a64f",
                    "author_name": $GITHUB_ACTOR,
                    "author_link": $GITHUB_SERVER_URL + "/" + $GITHUB_ACTOR,
