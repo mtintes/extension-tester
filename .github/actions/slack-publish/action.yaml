@@ -6,7 +6,7 @@ runs:
   steps:
     - shell: bash
       run: |
-        ls
-        jsonMessage=$(< ./slack_format.json)
+        ls ./.github/actions/slack-publish
+        jsonMessage=$(< ./.github/actions/slack-publish/slack_format.json)
         payload=$(printf '%s' "$jsonMessage" | jq --raw-input --slurp '.')
         echo "$payload"
