@@ -1,38 +1,12 @@
 name: 'publish to slack'
 description: 'ya publish to slack'
 
-env:
-    PAYLOAD: 
-        channel: bot
-        text:
-          attachments:
-          - fallback: This did some stuff
-            color: "#36a64f"
-            author_name: "$GITHUB_ACTOR"
-            author_link: "$GITHUB_SERVER_URL/$GITHUB_ACTOR"
-            author_icon: "$GITHUB_SERVER_URL/$GITHUB_ACTOR.png?size=32"
-            fields:
-            - title: "Ref"
-              value: "$GITHUB_REF"
-              short: true
-            - title: "Event"
-              value: "$GITHUB_EVENT_NAME"
-              short: true
-            - title: "Actions URL"
-              value: "<$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA/checks|$GITHUB_WORKFLOW>"
-              short: true
-            - title: "Commit"
-              value: "<$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/commit/$GITHUB_SHA|commit_sha>"
-              short: true
-            - title: "Thing"
-              value: "big long message"
-              short: false
-            footer: "Powered by a thing"
-
 runs:
   using: "composite"
   steps:
     - shell: bash
       run: |
-        echo "${{ env.PAYLOAD }}"
-        echo "${{ toJSON(env.PAYLOAD) }}"
+        ls ./.github/actions/slack-publish
+        jsonMessage=$(< ./.github/actions/slack-publish/slack_format.json)
+        payload=$(printf '%s' "$jsonMessage" | jq --raw-input --slurp '.')
+        echo "$payload"
