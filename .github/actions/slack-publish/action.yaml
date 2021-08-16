@@ -9,4 +9,5 @@ runs:
         ls
         jsonMessage=$(< ./slack_format.json)
         payload=$(printf '%s' "$jsonMessage" | jq --raw-input --slurp '.')
-        curl -X POST https://slack.com/api/chat.postMessage -d  "${{ toJSON($payload) }}" -H "Authorization: Bearer ${secrets.SLACK_TOKEN}"
+        echo "$payload"
+        #curl -X POST https://slack.com/api/chat.postMessage -d  "${{ toJSON($payload) }}" -H "Authorization: Bearer ${secrets.SLACK_TOKEN}"
