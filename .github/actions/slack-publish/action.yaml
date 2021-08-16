@@ -14,4 +14,4 @@ runs:
         echo "::set-output name=payload::$jsonMessage"
     - shell: bash
       run: |
-        echo "${{fromJson(steps.set_payload.outputs.payload)}}"
+        echo "${{fromJson(steps.set_payload.outputs.payload).text.attachments[0].author_name}}"
