@@ -17,9 +17,9 @@ jobs:
           with:
             slack_token: ${{ secrets.SLACK_TOKEN }}
             
-        - name: Notify slack
-          env:
-            SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
-          uses: pullreminders/slack-action@master
-          with:
-            args: '{\"channel\":\"bot\",\"text\":\"Hello world\"}'
+#         - name: Notify slack
+#           env:
+#             SLACK_BOT_TOKEN: ${{ secrets.SLACK_TOKEN }}
+#           uses: pullreminders/slack-action@master
+#           with:
+#             args: '{\"channel\":\"bot\",\"text\":\"Hello world\"}'
