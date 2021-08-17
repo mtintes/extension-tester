@@ -11,7 +11,7 @@ runs:
       run: |
         jsonMessage=`cat ./.github/actions/slack-publish/slack_test2.json`
         echo "::set-output name=payload::$jsonMessage"
-    - shell: bash
+    - name: send-to-slack
       env:
         SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
       run: |
