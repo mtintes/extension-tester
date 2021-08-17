@@ -1,8 +1,10 @@
 name: 'publish to slack'
 description: 'ya publish to slack'
 
-
-
+inputs:
+  slack_token:  # id of input
+    required: true
+    
 runs:
   using: "composite"
   steps:
@@ -12,7 +14,5 @@ runs:
         jsonMessage=`cat ./.github/actions/slack-publish/slack_test2.json`
         echo "::set-output name=payload::$jsonMessage"
     - name: send-to-slack
-      env:
-        SLACK_TOKEN: ${{secrets.SLACK_TOKEN}}
       run: |
-        ./.github/actions/slack-publish/slack_send.sh '${{steps.set_payload.outputs.payload }}'
+        ./.github/actions/slack-publish/slack_send.sh '${{ inputs.slack_token }}' '${{steps.set_payload.outputs.payload }}'
