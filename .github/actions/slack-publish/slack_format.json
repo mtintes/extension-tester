@@ -1,5 +1,5 @@
 {
-  "channel": "bot",
+  "channel": "$CHANNEL",
   "attachments": [
       {
         "fallback": "This did some stuff",
