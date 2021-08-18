@@ -15,6 +15,7 @@ runs:
       run: |
         jsonMessage=`cat ./.github/actions/slack-publish/slack_format.json`
         jsonMessage=`echo $jsonMessage | tr '\n' ' '`
+        jsonMessage=`echo $jsonMessage | envsubst` 
         echo $jsonMessage
         echo "::set-output name=payload::$jsonMessage"
     - shell: bash
