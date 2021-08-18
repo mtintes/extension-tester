@@ -4,6 +4,8 @@ description: 'ya publish to slack'
 inputs:
   slack_token:  # id of input
     required: true
+  channel: 
+    required: true
     
 runs:
   using: "composite"
@@ -17,4 +19,5 @@ runs:
         echo "::set-output name=payload::$jsonMessage"
     - shell: bash
       run: |
+        echo "::set-output name=channel::${{inputs.channel}}"
         ./.github/actions/slack-publish/slack_send.sh '${{ inputs.slack_token }}' '${{ steps.set_payload.outputs.payload }}'
