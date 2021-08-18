@@ -16,6 +16,7 @@ jobs:
         - uses: ./.github/actions/slack-publish
           with:
             slack_token: ${{ secrets.SLACK_TOKEN }}
+            channel: "bot"
             
 #         - name: Notify slack
 #           env:
