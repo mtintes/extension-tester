@@ -18,6 +18,7 @@ runs:
         echo $jsonMessage
         echo "::set-output name=payload::$jsonMessage"
     - shell: bash
+      env:
+        CHANNEL: ${{inputs.slack_channel}}
       run: |
-        CHANNEL=${{inputs.slack_channel}}
         ./.github/actions/slack-publish/slack_send.sh '${{ inputs.slack_token }}' '${{ steps.set_payload.outputs.payload }}'
