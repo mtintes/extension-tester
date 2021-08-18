@@ -12,7 +12,7 @@ runs:
       id: set_payload
       run: |
         jsonMessage=`cat ./.github/actions/slack-publish/slack_test2.json`
-        echo jsonMessage
+        echo $jsonMessage
         jsonMessage="${jsonMessage//'%'/'%25'}"
         jsonMessage="${jsonMessage//$'\n'/'%0A'}"
         jsonMessage="${jsonMessage//$'\r'/'%0D'}"
