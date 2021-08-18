@@ -19,7 +19,7 @@ jobs:
             slack_channel: "bot"
             slack_color: "good"
             slack_title: "WE DId it"
-            slack_message: "Here is a big long message about a thing.
+            slack_message: "Here is a big long message about a thing."
 
 #         - name: Notify slack
 #           env:
