@@ -6,6 +6,12 @@ inputs:
     required: true
   slack_channel: 
     required: true
+  slack_color:
+    required: true
+  slack_title:
+    required: true
+  slack_message:
+    required: true
     
 runs:
   using: "composite"
@@ -13,7 +19,10 @@ runs:
     - shell: bash
       id: set_payload
       env:
-        CHANNEL: ${{inputs.slack_channel}}
+        SLACK_CHANNEL: ${{inputs.slack_channel}}
+        SLACK_COLOR: ${{ inputs.slack_color }}
+        SLACK_TITLE: ${{ inputs.slack_title }}
+        SLACK_MESSAGE: ${{ inputs.slack_message }}
       run: |
         jsonMessage=`cat ./.github/actions/slack-publish/slack_format.json`
         jsonMessage=`echo $jsonMessage | tr '\n' ' '`
