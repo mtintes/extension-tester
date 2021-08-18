@@ -4,7 +4,7 @@
       {
         "fallback": "This did some stuff",
         "color": "#36a64f",
-        "author_name": "${GITHUB_ACTOR}",
+        "author_name": "${{github.GITHUB_ACTOR}}",
         "author_link": "$GITHUB_SERVER_URL/$GITHUB_ACTOR",
         "author_icon": "$GITHUB_SERVER_URL/$GITHUB_ACTOR.png?size=32",
         "fields": [
