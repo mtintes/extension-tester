@@ -1,7 +1,6 @@
 {
   "channel": "bot",
-  "text": {
-    "attachments": [
+  "attachments": [
       {
         "fallback": "This did some stuff",
         "color": "#36a64f",
@@ -38,5 +37,4 @@
         "footer": "Powered by a thing"
       }
     ]
-  }
 }
