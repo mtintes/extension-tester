@@ -19,7 +19,7 @@ runs:
     - shell: bash
       id: set_payload
       env:
-        SLACK_CHANNEL: ${{inputs.slack_channel}}
+        SLACK_CHANNEL: ${{ inputs.slack_channel }}
         SLACK_COLOR: ${{ inputs.slack_color }}
         SLACK_TITLE: ${{ inputs.slack_title }}
         SLACK_MESSAGE: ${{ inputs.slack_message }}
