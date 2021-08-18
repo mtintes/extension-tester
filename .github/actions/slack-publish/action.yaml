@@ -12,8 +12,8 @@ runs:
       id: set_payload
       run: |
         jsonMessage=`cat ./.github/actions/slack-publish/slack_test2.json`
-        echo $jsonMessage
         jsonMessage=$(printf "%q" $jsonMessage)
+        echo $jsonMessage
         echo "::set-output name=payload::$jsonMessage"
     - shell: bash
       run: |
