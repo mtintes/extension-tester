@@ -16,6 +16,7 @@ runs:
         jsonMessage="${jsonMessage//'%'/'%25'}"
         jsonMessage="${jsonMessage//$'\n'/'%0A'}"
         jsonMessage="${jsonMessage//$'\r'/'%0D'}"
+        jsonMessage=$(printf "%q" $jsonMessage)
         echo "::set-output name=payload::$jsonMessage"
     - shell: bash
       run: |
