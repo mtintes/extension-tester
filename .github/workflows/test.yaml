@@ -16,7 +16,7 @@ jobs:
         - uses: ./.github/actions/slack-publish
           with:
             slack_token: ${{ secrets.SLACK_TOKEN }}
-            slack_channel: ${{ github.event.inputs.test == 'a' && 'bot2' || 'bot' }}
+            slack_channel: ${{ github.event.inputs.test == 'a' && "bot2" || "bot" }}
             slack_title: "WE DId it"
             slack_message: "Here is a big long message about a thing."
 
