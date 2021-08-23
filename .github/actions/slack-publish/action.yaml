@@ -26,6 +26,8 @@ runs:
       run: |
         SLACK_MESSAGE=`sed -e 's/^"//' -e 's/"$//' <<<"$SLACK_MESSAGE"`
         echo $SLACK_MESSAGE
+        SLACK_MESSAGE="Nothing"
+        echo $SLACK_MESSAGE
         jsonMessage=`cat ./.github/actions/slack-publish/slack_format.json`
         jsonMessage=`echo $jsonMessage | envsubst` 
         jsonMessage=`echo $jsonMessage | tr '\n' ' '`
