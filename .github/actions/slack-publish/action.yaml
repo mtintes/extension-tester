@@ -22,7 +22,7 @@ runs:
         SLACK_CHANNEL: ${{ inputs.slack_channel }}
         SLACK_COLOR: ${{ inputs.slack_color }}
         SLACK_TITLE: ${{ inputs.slack_title }}
-        SLACK_MESSAGE: ${{ inputs.slack_message }}
+        SLACK_MESSAGE: ${{ sed -e 's/^"//' -e 's/"$// <<< inputs.slack_message }}
       run: |
         jsonMessage=`cat ./.github/actions/slack-publish/slack_format.json`
         jsonMessage=`echo $jsonMessage | envsubst` 
