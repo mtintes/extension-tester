@@ -24,7 +24,7 @@ runs:
         SLACK_TITLE: ${{ inputs.slack_title }}
         SLACK_MESSAGE: ${{ inputs.slack_message }}
       run: |
-        SLACK_MESSAGE=`sed -e 's/^"//' -e 's/"$// <<< "$SLACK_MESSAGE"`
+        SLACK_MESSAGE=`sed -e 's/^"//' -e 's/"$// <<<"$SLACK_MESSAGE"`
         echo $SLACK_MESSAGE
         jsonMessage=`cat ./.github/actions/slack-publish/slack_format.json`
         jsonMessage=`echo $jsonMessage | envsubst` 
