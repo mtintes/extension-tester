@@ -20,7 +20,7 @@ jobs:
             slack_token: ${{ secrets.SLACK_TOKEN }}
             slack_channel: ${{ github.event.inputs.test == 'a' && 'bot2' || 'bot' }}
             slack_title: "WE DId it"
-            slack_message: "${{Here is a big long github.event.inputs.message  message about a thing.}}"
+            slack_message: "Here is a big long ${{github.event.inputs.message}}  message about a thing."
 
 #         - name: Notify slack
 #           env:
